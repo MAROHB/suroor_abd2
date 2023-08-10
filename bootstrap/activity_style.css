@@ -1,0 +1,102 @@
+   @import url('https://fonts.googleapis.com/css?family=Numans');
+   body {
+    background-image: url("../mainimages/Activity_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position:center center ;
+    
+};
+
+
+html,body{
+max-height:100%;
+max-width: 100% ;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+.card:hover{
+border-radius: 5%;
+background-color: rgba(87, 94, 13, 0.5) !important;
+}
+.card{
+height: 110%;
+margin-top: 20% !important;
+margin-bottom: 50% !important;
+margin-left: 10%;
+width: 80%;
+background-color: rgba(87, 94, 13, 0.3) !important;
+transition: 0.5s ;
+}
+
+
+.card-header h3{
+color: white;
+}
+.card-header div{
+padding-left: 10% !important;
+}
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.Btn-Go{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.Btn-Go:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+.contact-icons img {
+opacity:0.4 !important;
+width: 40px; /* Adjust the width and height according to your preference */
+height: 40px;
+border-radius: 50%; /* Create a circular shape */
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow effect */
+}
+.contact-icons img:hover{
+filter: hue-rotate(60deg) saturate(2);
+opacity:1 !important;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  #image-container {
+    position: relative;
+    overflow: hidden;
+    width: 90vw;
+    height: 80vh;
+    border: 2px solid #333;
+  }
+  #zoom-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform-origin: 0 0;
+    transform: scale(200deg);
+    user-select: none; /* Prevents image selection */
+  }
+  img{
+    user-select: none !important;
+    }
+</style>
+</head>
+<body>
+  <div id="image-container">
+    <img id="zoom-image" src="" alt="Loading..." draggable="false" >
+  </div>
+  
+  
+  <script>
+    const imageContainer = document.getElementById('image-container');
+    const zoomImage = document.getElementById('zoom-image');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const imagePath = urlParams.get('src');
+
+    if (imagePath) {
+      zoomImage.src = imagePath;
+    } else {
+      zoomImage.src = 'default.jpg'; // Replace with your default image path
+    }
+
+    let scale = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    imageContainer.addEventListener('wheel', (event) => {
+      event.preventDefault();
+
+      if (event.deltaY < 0) {
+        scale *= 1.1;
+      } else {
+        scale /= 1.1;
+      }
+
+      zoomImage.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+    });
+
+    let isDragging = false;
+    let startX, startY, startOffsetX, startOffsetY;
+
+    imageContainer.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      startOffsetX = offsetX;
+      startOffsetY = offsetY;
+    });
+
+    window.addEventListener('mousemove', (event) => {
+      if (!isDragging) return;
+
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+
+      offsetX = startOffsetX + deltaX;
+      offsetY = startOffsetY + deltaY;
+
+      zoomImage.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+  </script>
+</body>
+</html>
